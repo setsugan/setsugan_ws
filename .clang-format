@@ -1,0 +1,212 @@
+#
+#    インデントにタブを使用しない
+#
+
+UseTab: Never
+
+#
+#    インデント幅
+#
+
+IndentWidth: 4
+
+#
+#    連続する行のインデント幅
+#
+
+ContinuationIndentWidth: 4
+
+#
+#    行コメントの前のスペースの数
+#
+
+SpacesBeforeTrailingComments: 1
+
+#
+#    引数が複数行にまたがる場合のスタイル
+#
+
+BinPackParameters: true
+
+#
+#    複数行で連続する `=` の位置を揃える
+#
+
+AlignConsecutiveAssignments: true
+
+#
+#    複数行で連続する宣言の位置を揃える
+#
+
+AlignConsecutiveDeclarations: true
+
+#
+#    エスケープされた改行を可能な限り左に配置
+#
+
+AlignEscapedNewlines: Left
+
+#
+#    中括弧の前で改行する
+#
+
+BreakBeforeBraces: Allman
+
+#
+#    関数の引数のインデント
+#
+
+AllowShortIfStatementsOnASingleLine: false
+
+#
+#    最大行幅 (0: 無制限)
+#
+
+ColumnLimit: 0
+
+#
+#    最大数空白行数
+#
+
+MaxEmptyLinesToKeep: 1
+
+#
+#    名前空間のインデント
+#
+
+NamespaceIndentation: All
+
+#
+#    名前空間の終わりに名前空間名をコメントで付ける
+#
+
+FixNamespaceComments: true
+
+#
+#    引数にラムダ式を渡す場合に1行にする
+#
+
+AllowShortLambdasOnASingleLine: Inline
+
+#
+#    アクセス修飾子のインデント
+#
+
+AccessModifierOffset: -4
+
+#
+#    継承時、基底クラス名のインデントスタイル
+#
+#    class DerivedClass
+#        : public BaseClass
+#        , public Interface
+#
+
+BreakInheritanceList: BeforeComma
+
+#
+#    コンストラクタの初期化リストのインデントスタイル
+#
+#    Constructor()
+#        : initializer1()
+#        , initializer2()
+#
+
+BreakConstructorInitializers: BeforeComma
+
+#
+#    コンストラクタの初期化リストのインデント幅
+#
+
+ConstructorInitializerIndentWidth: 4
+
+#
+#    中括弧のスタイル
+#
+#    true :  int array[] = { 1, 2, 3, 4, 5 };
+#    false:  int array[] = {1, 2, 3, 4, 5};
+#
+
+Cpp11BracedListStyle: true
+
+#
+#    Switch 文の case のインデントをなくす
+#
+
+IndentCaseLabels: false
+
+#
+#    Switch 文の case 内が単数行の場合に1行にする
+#
+
+AllowShortCaseLabelsOnASingleLine: true
+
+#
+#    インクルードファイルのソート
+#
+
+SortIncludes: true
+IncludeBlocks: Regroup
+
+#
+#    ポインタの `*` の位置
+#
+
+PointerAlignment: Left
+
+#
+#    参照型の `&` の位置
+#
+
+ReferenceAlignment: Left
+
+#
+#    プリプロセッサディレクティブのインデント
+#
+
+PPIndentWidth: 4
+
+#
+#    ネストされたプリプロセッサディレクティブのインデント
+#
+
+IndentPPDirectives: AfterHash
+
+#
+#    括弧の前にスペース
+#
+
+SpaceBeforeParens: Always
+
+#
+#    インクルードヘッダの配置順
+#
+
+IncludeCategories:
+  # C++ system headers
+  - Regex: <[a-z_]*>
+    Priority: 6
+    CaseSensitive: true
+  # C system headers
+  - Regex: <.*\.h>
+    Priority: 5
+    CaseSensitive: true
+  # Boost headers
+  - Regex: boost/.*
+    Priority: 4
+    CaseSensitive: true
+  # Message headers
+  - Regex: .*_msgs/.*
+    Priority: 3
+    CaseSensitive: true
+  - Regex: .*_srvs/.*
+    Priority: 3
+    CaseSensitive: true
+  # Other Package headers
+  - Regex: <.*>
+    Priority: 2
+    CaseSensitive: true
+  # Local package headers
+  - Regex: '".*"'
+    Priority: 1
+    CaseSensitive: true
