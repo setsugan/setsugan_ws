@@ -21,6 +21,38 @@ namespace setsugan_occupancy_grid
     OccupancyGridAllValue::OccupancyGridAllValue (const rclcpp::NodeOptions& node_options)
         : Node ("occupancy_grid_all_value", node_options)
     {
+        // 地図送信時の QoS は translate_local を用いる
+        occupancy_grid_publisher_ = create_publisher<nav_msgs::msg::OccupancyGrid> (
+            "occupancy_grid", rclcpp::QoS (1).reliable ().transient_local ());
+
+        nav_msgs::msg::OccupancyGrid occupancy_grid;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // header
+        occupancy_grid.header.stamp    = this->now ();
+        occupancy_grid.header.frame_id = "map";
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // info
+        occupancy_grid.info.map_load_time        = this->now ();
+        occupancy_grid.info.resolution           = 0.05;
+        occupancy_grid.info.width                = 1;
+        occupancy_grid.info.height               = 1;
+        occupancy_grid.info.origin.position.x    = 0.0;
+        occupancy_grid.info.origin.position.y    = 0.0;
+        occupancy_grid.info.origin.position.z    = 0.0;
+        occupancy_grid.info.origin.orientation.x = 0.0;
+        occupancy_grid.info.origin.orientation.y = 0.0;
+        occupancy_grid.info.origin.orientation.z = 0.0;
+        occupancy_grid.info.origin.orientation.w = 1.0;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // data
+        occupancy_grid.data = {100};
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // publish
+        occupancy_grid_publisher_->publish(occupancy_grid);
 
         RCLCPP_INFO (this->get_logger (), "occupancy_grid_all_value node has been initialized.");
     }

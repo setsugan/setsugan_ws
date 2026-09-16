@@ -17,6 +17,8 @@
 
 #include <rclcpp/rclcpp.hpp>
 
+#include "nav_msgs/msg/occupancy_grid.hpp"
+
 namespace setsugan_occupancy_grid
 {
     class OccupancyGridAllValue : public rclcpp::Node
@@ -24,7 +26,8 @@ namespace setsugan_occupancy_grid
     public:
         explicit OccupancyGridAllValue (const rclcpp::NodeOptions& node_options);
 
-        
+    private:
+        rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr occupancy_grid_publisher_;
     };
 } // namespace setsugan_occupancy_grid
 

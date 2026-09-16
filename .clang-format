@@ -62,7 +62,7 @@ AllowShortIfStatementsOnASingleLine: false
 #    最大行幅 (0: 無制限)
 #
 
-ColumnLimit: 0
+ColumnLimit: 120
 
 #
 #    最大数空白行数
