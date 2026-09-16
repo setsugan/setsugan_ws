@@ -36,8 +36,8 @@ namespace setsugan_occupancy_grid
         // info
         occupancy_grid.info.map_load_time        = this->now ();
         occupancy_grid.info.resolution           = 0.05;
-        occupancy_grid.info.width                = 1;
-        occupancy_grid.info.height               = 1;
+        occupancy_grid.info.width                = 17;
+        occupancy_grid.info.height               = 6;
         occupancy_grid.info.origin.position.x    = 0.0;
         occupancy_grid.info.origin.position.y    = 0.0;
         occupancy_grid.info.origin.position.z    = 0.0;
@@ -48,11 +48,22 @@ namespace setsugan_occupancy_grid
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         // data
-        occupancy_grid.data = {100};
+
+        // -1 ~ 100 まで値を入れる
+        for (int i = -1 ; i <= 100; ++i)
+        {
+            occupancy_grid.data.push_back (i);
+        }
+
+        // 任意の位置に値を入れる
+        // const int mx = 2;
+        // const int my = 2;
+
+        // occupancy_grid.data[my * occupancy_grid.info.width + mx] = 100;
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         // publish
-        occupancy_grid_publisher_->publish(occupancy_grid);
+        occupancy_grid_publisher_->publish (occupancy_grid);
 
         RCLCPP_INFO (this->get_logger (), "occupancy_grid_all_value node has been initialized.");
     }
